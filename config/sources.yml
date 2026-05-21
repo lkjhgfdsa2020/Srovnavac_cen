@@ -1,0 +1,137 @@
+sources:
+  - source: lidl
+    country: CZ
+    base_url: https://www.lidl.cz
+    parkside_url: https://www.lidl.cz/c/parkside/s10068914
+    phase_min: 1
+    currency: CZK
+    supports_online_purchase: true
+    supports_detail_variants: true
+    enabled: true
+
+  - source: lidl
+    country: SK
+    base_url: https://www.lidl.sk
+    parkside_url: https://www.lidl.sk/c/parkside/s10068914
+    phase_min: 1
+    currency: EUR
+    supports_online_purchase: true
+    supports_detail_variants: true
+    enabled: true
+
+  - source: lidl
+    country: PL
+    base_url: https://www.lidl.pl
+    parkside_url: https://www.lidl.pl/c/parkside/s10068914
+    phase_min: 1
+    currency: PLN
+    supports_online_purchase: true
+    supports_detail_variants: true
+    enabled: true
+
+  - source: lidl
+    country: HU
+    base_url: https://www.lidl.hu
+    parkside_url: https://www.lidl.hu/c/parkside/s10068914
+    phase_min: 1
+    currency: HUF
+    supports_online_purchase: conditional
+    supports_detail_variants: true
+    enabled: true
+    non_online_policy: mark_not_online_purchasable
+
+  - source: lidl
+    country: AT
+    base_url: https://www.lidl.at
+    parkside_url: https://www.lidl.at/c/parkside/s10068914
+    phase_min: 1
+    currency: EUR
+    supports_online_purchase: true
+    supports_detail_variants: true
+    enabled: true
+
+  - source: lidl
+    country: DE
+    base_url: https://www.lidl.de
+    parkside_url: https://www.lidl.de/c/parkside/s10068914
+    phase_min: 1
+    currency: EUR
+    supports_online_purchase: true
+    supports_detail_variants: true
+    enabled: true
+
+  - source: kaufland
+    country: CZ
+    base_url: https://www.kaufland.cz
+    phase_min: 2
+    currency: CZK
+    supports_online_purchase: true
+    enabled: true
+    seller_policy: direct_only
+
+  - source: kaufland
+    country: SK
+    base_url: https://www.kaufland.sk
+    phase_min: 2
+    currency: EUR
+    supports_online_purchase: true
+    enabled: true
+    seller_policy: direct_only
+
+  - source: kaufland
+    country: PL
+    base_url: https://www.kaufland.pl
+    phase_min: 2
+    currency: PLN
+    supports_online_purchase: true
+    enabled: true
+    seller_policy: direct_only
+
+  - source: kaufland
+    country: DE
+    base_url: https://www.kaufland.de
+    phase_min: 2
+    currency: EUR
+    supports_online_purchase: true
+    enabled: true
+    seller_policy: direct_only
+
+  - source: heureka
+    country: CZ
+    base_url: https://www.heureka.cz
+    phase_min: 3
+    currency: CZK
+    supports_online_purchase: true
+    enabled: true
+
+  - source: heureka
+    country: SK
+    base_url: https://www.heureka.sk
+    phase_min: 3
+    currency: EUR
+    supports_online_purchase: true
+    enabled: true
+
+  - source: idealo
+    country: DE
+    base_url: https://www.idealo.de
+    phase_min: 3
+    currency: EUR
+    supports_online_purchase: true
+    enabled: true
+
+  - source: geizhals
+    country: AT
+    base_url: https://geizhals.at
+    phase_min: 3
+    currency: EUR
+    supports_online_purchase: true
+    enabled: true
+
+  - source: allegro
+    country: PL
+    base_url: https://allegro.pl
+    phase_min: 3
+    currency: PLN
+    supports_online_purchase: true
+    enabled: true

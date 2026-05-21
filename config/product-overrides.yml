@@ -1,0 +1,11 @@
+overrides:
+  - id: parkside-pws-230-e5
+    action: merge
+    aliases:
+      - Winkelschleifer PWS 230 E5
+  - id: parkside-pamt-20-li-a1
+    action: ignore
+    reason: "No longer sold"
+  - id: parkside-papp-2012-a1-12ah
+    action: split
+    split_regex: "2dílná"

@@ -1,0 +1,17 @@
+{
+  "name": "crawler",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "fx:update": "tsx src/cli/fx.ts"
+  },
+  "dependencies": {
+    "core": "workspace:*",
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.1"
+  }
+}

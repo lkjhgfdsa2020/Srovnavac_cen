@@ -1,0 +1,82 @@
+name: Crawl and Build
+
+on:
+  schedule:
+    - cron: '0 5 * * *' # Every day at 5 AM UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  run-system:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v3
+      with:
+        version: 9.0.0
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'pnpm'
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+
+    - name: Validate Config
+      run: pnpm validate:data
+
+    - name: Run FX update
+      run: pnpm fx:update
+
+    - name: Run Crawler & Comparison
+      run: pnpm --filter crawler start || echo "Crawler returned non-zero, continuing"
+      env:
+        NODE_OPTIONS: "--max-http-header-size=65536"
+
+    - name: Validate Output JSON
+      run: pnpm validate:output
+
+    - name: Build Web
+      run: pnpm build:web
+      
+    - name: Upload Static Web Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: parkside-price-watch-web
+        path: packages/web/dist/
+        
+    - name: Commit data updates
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add data/
+        git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update daily prices" && git push)
+
+  deploy:
+    needs: run-system
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: parkside-price-watch-web
+          path: './dist'
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

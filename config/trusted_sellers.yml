@@ -1,0 +1,18 @@
+trusted_sellers:
+  - name: Alza.cz
+    country: CZ
+    rating: 4.8
+    trust_level: high
+    url: https://www.alza.cz
+
+  - name: Mall.cz
+    country: CZ
+    rating: 4.5
+    trust_level: medium
+    url: https://www.mall.cz
+
+  - name: Datart.cz
+    country: CZ
+    rating: 4.6
+    trust_level: medium
+    url: https://www.datart.cz

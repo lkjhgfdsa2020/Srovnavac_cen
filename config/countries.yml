@@ -1,0 +1,37 @@
+countries:
+  - code: CZ
+    name_cs: Česko
+    currency: CZK
+    locale: cs-CZ
+    enabled: true
+
+  - code: SK
+    name_cs: Slovensko
+    currency: EUR
+    locale: sk-SK
+    enabled: true
+
+  - code: PL
+    name_cs: Polsko
+    currency: PLN
+    locale: pl-PL
+    enabled: true
+
+  - code: HU
+    name_cs: Maďarsko
+    currency: HUF
+    locale: hu-HU
+    enabled: true
+    notes: "V MVP jen online/předobjednávkové nabídky; standardní Lidl HU online nákup nemusí být dostupný."
+
+  - code: AT
+    name_cs: Rakousko
+    currency: EUR
+    locale: de-AT
+    enabled: true
+
+  - code: DE
+    name_cs: Německo
+    currency: EUR
+    locale: de-DE
+    enabled: true

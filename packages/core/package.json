@@ -1,0 +1,16 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "validate": "tsx src/cli/validate.ts",
+    "validate:output": "tsx src/cli/validate-output.ts"
+  },
+  "dependencies": {
+    "zod": "^3.22.4",
+    "yaml": "^2.3.4"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.1"
+  }
+}

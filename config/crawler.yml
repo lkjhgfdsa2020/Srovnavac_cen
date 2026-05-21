@@ -1,0 +1,10 @@
+crawler:
+  default_delay_ms: 1500
+  max_concurrency_per_source: 1
+  max_retries: 2
+  retry_backoff_ms: 3000
+  request_timeout_ms: 30000
+  user_agent: "ParksidePriceWatch/0.1 personal price monitor"
+  respect_robots_txt: true
+  store_html_fixtures: false
+  store_raw_offers_days: 30

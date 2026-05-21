@@ -3,3 +3,10 @@ config.json
 *.xlsx
 *.log
 __pycache__/
+node_modules/
+dist/
+.env
+.DS_Store
+data/public/
+data/history/
+coverage/
