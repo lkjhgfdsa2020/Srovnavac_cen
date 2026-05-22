@@ -51,5 +51,6 @@ const localApiPlugin = {
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/Srovnavac_cen/',
   plugins: [react(), localApiPlugin],
 })

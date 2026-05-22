@@ -80,7 +80,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch('/data/latest-comparison.json')
+    fetch(`${import.meta.env.BASE_URL}data/latest-comparison.json`)
       .then(r => r.json())
       .then(setData)
       .catch(e => setError(e.message));
@@ -119,7 +119,7 @@ function App() {
               🛡️ Kaufland External Sellers Excluded: {data.health_report.excluded_external_sellers_count}
             </span>
           )}
-          <a href="/data/latest-comparison.csv" className="stats-badge" style={{color: 'inherit', textDecoration: 'none'}}>
+          <a href={`${import.meta.env.BASE_URL}data/latest-comparison.csv`} className="stats-badge" style={{color: 'inherit', textDecoration: 'none'}}>
             ⭳ Download CSV
           </a>
         </div>
