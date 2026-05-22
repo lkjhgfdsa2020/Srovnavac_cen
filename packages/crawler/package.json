@@ -4,7 +4,8 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "tsx src/index.ts",
-    "fx:update": "tsx src/cli/fx.ts"
+    "fx:update": "tsx src/cli/fx.ts",
+    "spider": "tsx src/cli/spider.ts"
   },
   "dependencies": {
     "core": "workspace:*",

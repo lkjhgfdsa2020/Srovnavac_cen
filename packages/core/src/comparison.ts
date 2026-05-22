@@ -90,6 +90,22 @@ export class ComparisonEngine {
         }
       }
 
+      let representativeImageUrl: string | null | undefined = null;
+      for (const cell of matchedCells) {
+        // Find corresponding raw offer to get image
+        const raw = offers.find(o => 
+          o.source === cell.source && 
+          o.country === cell.country && 
+          o.raw_model_code === product.model_code
+        );
+        // Fallback search since ID might not strictly equal model_code
+        const rawOffer = offers.find(o => o.url === cell.url);
+        if (rawOffer && rawOffer.image_url) {
+          representativeImageUrl = rawOffer.image_url;
+          break;
+        }
+      }
+
       const row: ComparisonRow = {
         canonical_variant_id: product.canonical_variant_id,
         canonical_product_id: product.canonical_product_id,
@@ -97,6 +113,7 @@ export class ComparisonEngine {
         model_code: product.model_code,
         bundle_summary: product.bundle_type,
         category: product.category,
+        image_url: representativeImageUrl,
         best_offer_id: bestOfferId,
         best_country: bestCountry,
         best_source: bestSource,

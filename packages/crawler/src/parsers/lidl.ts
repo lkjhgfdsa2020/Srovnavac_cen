@@ -18,6 +18,7 @@ export class LidlParser {
     const raw_model_code = $('.keyfeatures__modelcode').text().trim() || null;
     const priceStr = $('meta[property="product:price:amount"]').attr('content') || $('.pricebox__price').text().replace(/[^\d.,]/g, '').replace(',', '.');
     const price = priceStr ? parseFloat(priceStr) : null;
+    const image_url = $('meta[property="og:image"]').attr('content') || undefined;
     
     const availabilityStr = $('meta[property="product:availability"]').attr('content') || $('.availabilitybox').text().toLowerCase();
     
@@ -63,6 +64,7 @@ export class LidlParser {
           raw_title: `${raw_title} - ${variantText}`,
           raw_model_code: raw_model_code || undefined,
           raw_variant_text: variantText,
+          image_url,
         });
       });
     } else {
@@ -76,9 +78,45 @@ export class LidlParser {
         availability,
         raw_title,
         raw_model_code: raw_model_code || undefined,
+        image_url,
       });
     }
 
     return offers;
+  }
+
+  static parseSearch(html: string): { url: string; title: string }[] {
+    const $ = cheerio.load(html);
+    const results: { url: string; title: string }[] = [];
+    
+    // Lidl search results typically contain product tiles with links containing /p/
+    $('a').each((_, el) => {
+      const href = $(el).attr('href');
+      // Some titles might be nested inside text elements, or the text of the link itself
+      let title = $(el).text().trim().replace(/\s+/g, ' ');
+      if (!title) {
+        // Try finding an img alt
+        title = $(el).find('img').attr('alt') || '';
+      }
+      if (href && href.includes('/p/')) {
+        results.push({ url: href, title });
+      }
+    });
+
+    // Remove duplicates based on URL
+    const uniqueResults = [];
+    const seenUrls = new Set();
+    for (const r of results) {
+      // Clean up URL parameters
+      const cleanUrl = r.url.split('?')[0];
+      if (!seenUrls.has(cleanUrl)) {
+        seenUrls.add(cleanUrl);
+        // Clean up titles by trying to find the most descriptive link for the URL
+        const descriptiveTitle = results.filter(x => x.url.split('?')[0] === cleanUrl).map(x => x.title).sort((a, b) => b.length - a.length)[0] || '';
+        uniqueResults.push({ url: cleanUrl, title: descriptiveTitle });
+      }
+    }
+
+    return uniqueResults;
   }
 }

@@ -11,7 +11,8 @@
     "validate:data": "pnpm --filter core validate",
     "validate:output": "pnpm --filter core validate:output",
     "fx:update": "pnpm --filter crawler fx:update",
-    "crawl": "pnpm --filter crawler start"
+    "crawl": "pnpm --filter crawler start",
+    "spider": "NODE_OPTIONS=\"--max-http-header-size=65536\" pnpm --filter crawler spider && pnpm crawl"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

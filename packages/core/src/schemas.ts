@@ -78,6 +78,7 @@ export const RawOfferSchema = z.object({
   ean: z.string().optional(),
   seller: z.string().optional(),
   is_external_seller: z.boolean().optional(),
+  image_url: z.string().optional(),
 });
 
 export const NormalizedOfferSchema = RawOfferSchema.extend({
@@ -116,7 +117,8 @@ export const ComparisonRowSchema = z.object({
   model_code: z.string(),
   bundle_summary: z.string(),
   category: z.string(),
-  best_offer_id: z.string().nullable(),
+  image_url: z.string().optional().nullable(),
+  best_offer_id: z.string().optional().nullable(),
   best_country: z.string().nullable(),
   best_source: z.string().nullable(),
   best_price_czk: z.number().nullable(),

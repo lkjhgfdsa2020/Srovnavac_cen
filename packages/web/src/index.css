@@ -1,14 +1,14 @@
 :root {
-  --bg-color: #0f172a;
-  --bg-card: #1e293b;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --accent: #38bdf8;
-  --accent-glow: rgba(56, 189, 248, 0.4);
-  --success: #10b981;
-  --success-glow: rgba(16, 185, 129, 0.2);
-  --error: #ef4444;
-  --border: #334155;
+  --bg-color: #f8fafc;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent: #0284c7;
+  --accent-glow: rgba(2, 132, 199, 0.4);
+  --success: #059669;
+  --success-glow: rgba(5, 150, 105, 0.2);
+  --error: #dc2626;
+  --border: #e2e8f0;
 }
 
 body {
@@ -29,7 +29,7 @@ h1 {
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  background: linear-gradient(135deg, #0284c7, #4f46e5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -56,7 +56,7 @@ h1 {
 }
 
 .stats-badge {
-  background: rgba(255, 255, 255, 0.05);
+  background: #f1f5f9;
   padding: 0.5rem 1rem;
   border-radius: 99px;
   border: 1px solid var(--border);
@@ -69,7 +69,7 @@ h1 {
   overflow-x: auto;
   background: var(--bg-card);
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   border: 1px solid var(--border);
 }
 
@@ -80,7 +80,7 @@ table {
 }
 
 th {
-  background: rgba(0, 0, 0, 0.2);
+  background: #f8fafc;
   padding: 1rem;
   text-align: left;
   font-weight: 600;
@@ -100,7 +100,7 @@ tr:last-child td {
 }
 
 tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+  background: #f8fafc;
 }
 
 .product-name {
@@ -118,6 +118,8 @@ tr:hover td {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  align-items: center;
+  text-align: center;
 }
 
 .price-main {
@@ -145,12 +147,15 @@ tr:hover td {
 }
 
 .status-badge {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-weight: 600;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  font-weight: 700;
+  cursor: help;
 }
 
 .status-available {
@@ -201,7 +206,7 @@ tr:hover td {
 
 .quality-flag {
   font-size: 0.65rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: #f1f5f9;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   color: var(--text-secondary);
@@ -209,6 +214,58 @@ tr:hover td {
 }
 
 .health-badge {
-  border-color: rgba(245, 158, 11, 0.5);
-  color: #fcd34d;
+  border-color: rgba(217, 119, 6, 0.5);
+  color: #d97706;
+}
+
+.cta-button {
+  background: var(--accent);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cta-button:hover:not(:disabled) {
+  box-shadow: 0 0 15px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.add-product-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background: var(--bg-card);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-top: 1rem;
+}
+
+.url-input {
+  flex: 1;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.url-input:focus {
+  border-color: var(--accent);
 }

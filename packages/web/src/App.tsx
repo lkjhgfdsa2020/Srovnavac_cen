@@ -21,6 +21,7 @@ interface ComparisonRow {
   model_code: string;
   bundle_summary: string;
   category: string;
+  image_url?: string | null;
   best_price_czk: number | null;
   cells: ComparisonCell[];
 }
@@ -38,6 +39,45 @@ function App() {
   const [data, setData] = useState<ComparisonData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [filterCategory, setFilterCategory] = useState<string>('ALL');
+  
+  const [newProductUrl, setNewProductUrl] = useState('');
+  const [isAdding, setIsAdding] = useState(false);
+
+  const handleAddProduct = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newProductUrl) return;
+    setIsAdding(true);
+    try {
+      const res = await fetch('/api/add-product', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: newProductUrl })
+      });
+      if (!res.ok) {
+        const d = await res.json();
+        alert('Error: ' + d.error);
+      } else {
+        setNewProductUrl('');
+        alert('Product added and crawler triggered! Reloading data...');
+        window.location.reload();
+      }
+    } catch (err) {
+      alert('Failed to add product.');
+    } finally {
+      setIsAdding(false);
+    }
+  };
+
+  const formatCurrency = (amount: number, currency: string) => {
+    const rounded = Math.round(amount);
+    switch(currency) {
+      case 'EUR': return `€${rounded}`;
+      case 'CZK': return `${rounded} Kč`;
+      case 'PLN': return `${rounded} zł`;
+      case 'HUF': return `${rounded} Ft`;
+      default: return `${rounded} ${currency}`;
+    }
+  };
 
   useEffect(() => {
     fetch('/data/latest-comparison.json')
@@ -89,7 +129,32 @@ function App() {
           <select value={filterCategory} onChange={e => setFilterCategory(e.target.value)} className="filter-select">
             {categories.map(c => <option key={c} value={c}>{c}</option>)}
           </select>
+
+          <a 
+            href="https://github.com/new" 
+            target="_blank" 
+            rel="noreferrer"
+            className="cta-button"
+            style={{ marginLeft: 'auto' }}
+            title="Takes you to GitHub Actions to trigger the crawl-and-build workflow"
+          >
+            ▶ Re-run Crawl (GitHub Actions)
+          </a>
         </div>
+
+        <form onSubmit={handleAddProduct} className="add-product-form">
+          <input 
+            type="url" 
+            placeholder="Paste Lidl/Kaufland CZ product URL to add..." 
+            value={newProductUrl} 
+            onChange={e => setNewProductUrl(e.target.value)} 
+            className="url-input"
+            required
+          />
+          <button type="submit" className="cta-button" disabled={isAdding}>
+            {isAdding ? 'Adding & Crawling...' : '+ Add Product'}
+          </button>
+        </form>
       </header>
 
       <div className="table-container">
@@ -97,32 +162,48 @@ function App() {
           <thead>
             <tr>
               <th>Product</th>
-              {countries.map(c => <th key={c}>{c}</th>)}
+              {countries.map(c => <th key={c} style={{textAlign: 'center'}}>{c}</th>)}
             </tr>
           </thead>
           <tbody>
             {filteredRows.map(row => (
               <tr key={row.canonical_product_id}>
                 <td>
-                  <div className="product-name">{row.display_name}</div>
-                  <div className="product-meta">{row.model_code} • {row.bundle_summary}</div>
+                  <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+                    {row.image_url ? (
+                      <img src={row.image_url} alt="" style={{ width: '48px', height: '48px', objectFit: 'contain', background: '#fff', borderRadius: '4px', border: '1px solid var(--border)' }} />
+                    ) : (
+                      <div style={{ width: '48px', height: '48px', background: 'var(--bg-card)', borderRadius: '4px', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.65rem', color: 'var(--text-secondary)' }}>No IMG</div>
+                    )}
+                    <div>
+                      <div className="product-name">{row.display_name}</div>
+                      <div className="product-meta">{row.model_code} • {row.bundle_summary}</div>
+                    </div>
+                  </div>
                 </td>
                 {countries.map(country => {
-                  const cell = row.cells.find(c => c.country === country);
+                  const cellsForCountry = row.cells.filter(c => c.country === country);
+                  const cell = cellsForCountry.sort((a, b) => {
+                    if (a.is_best) return -1;
+                    if (b.is_best) return 1;
+                    return (a.price_czk ?? Infinity) - (b.price_czk ?? Infinity);
+                  })[0];
+                  
                   if (!cell) {
-                    return <td key={country} className="empty-cell">- No data -</td>;
+                    return <td key={country} className="empty-cell" style={{textAlign: 'center'}}>- No data -</td>;
                   }
 
                   let statusClass = 'status-available';
-                  let statusText = 'In Stock';
-                  if (cell.status === 'out_of_stock') { statusClass = 'status-out'; statusText = 'Out of Stock'; }
-                  if (cell.status === 'not_online_purchasable') { statusClass = 'status-not_online'; statusText = 'Not Online'; }
-                  if (cell.status === 'online_preorder') { statusClass = 'status-available'; statusText = 'Preorder'; }
+                  let statusText = '✓';
+                  let statusTitle = 'In Stock';
+                  if (cell.status === 'out_of_stock') { statusClass = 'status-out'; statusText = '✗'; statusTitle = 'Out of Stock'; }
+                  if (cell.status === 'not_online_purchasable') { statusClass = 'status-not_online'; statusText = '⊘'; statusTitle = 'Not Available Online'; }
+                  if (cell.status === 'online_preorder') { statusClass = 'status-available'; statusText = '⏳'; statusTitle = 'Preorder'; }
 
                   const isExactMatch = cell.quality_flags?.includes('match_model_code_exact');
 
                   return (
-                    <td key={country}>
+                    <td key={country} style={{textAlign: 'center'}}>
                       <div className="price-cell">
                         {cell.price !== null ? (
                           <>
@@ -133,18 +214,20 @@ function App() {
                               className={`price-main ${cell.is_best ? 'best-price' : ''}`}
                               style={{ textDecoration: 'none', color: cell.is_best ? 'var(--success)' : 'inherit' }}
                             >
-                              {cell.price} {cell.currency}
+                              {formatCurrency(cell.price, cell.currency!)}
                             </a>
                             <div className="price-sub">
-                              {cell.price_czk} CZK
+                              {cell.is_best && cell.currency !== 'CZK' && cell.price_czk !== null && (
+                                <span>{Math.round(cell.price_czk)} Kč</span>
+                              )}
                               {!cell.is_best && cell.delta_to_best_percent !== null && cell.delta_to_best_percent > 0 && (
-                                <span className="delta" style={{marginLeft: '0.5rem'}}>
-                                  +{cell.delta_to_best_percent}%
+                                <span className="delta" style={{marginLeft: cell.is_best ? '0.5rem' : '0'}}>
+                                  +{Math.round(cell.delta_to_best_percent)}%
                                 </span>
                               )}
                             </div>
                             <div style={{display: 'flex', gap: '4px', alignItems: 'center', marginTop: '4px'}}>
-                              <span className={`status-badge ${statusClass}`}>{statusText}</span>
+                              <span className={`status-badge ${statusClass}`} title={statusTitle}>{statusText}</span>
                               {cell.quality_flags && cell.quality_flags.length > 0 && (
                                 <span className="quality-flag" title={cell.quality_flags.join(', ')}>
                                   {isExactMatch ? '✓ Exact' : '⚠️ Fuzzy'}
@@ -153,7 +236,7 @@ function App() {
                             </div>
                           </>
                         ) : (
-                          <span className={`status-badge ${statusClass}`}>{statusText}</span>
+                          <span className={`status-badge ${statusClass}`} title={statusTitle}>{statusText}</span>
                         )}
                       </div>
                     </td>
