@@ -33,7 +33,7 @@ jobs:
       run: pnpm fx:update
 
     - name: Install Playwright
-      run: npx playwright install --with-deps chromium
+      run: pnpm --filter crawler exec playwright install --with-deps chromium
 
     - name: Run Crawler & Comparison
       run: pnpm spider || echo "Crawler returned non-zero, continuing"
