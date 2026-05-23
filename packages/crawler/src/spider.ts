@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'yaml';
 import { LidlParser } from './parsers/lidl.js';
-import { fetchWithRetry } from './http.js';
+import { BrowserPool } from './browser.js';
 import { Matcher, CanonicalProduct, RawOffer } from 'core/src/matcher.js';
 
 const DELAY_MS = 2000;
@@ -25,9 +25,13 @@ export class SearchSpider {
     const countries = ['CZ', 'SK', 'PL', 'HU', 'AT', 'DE'];
     const discoveredOffers: RawOffer[] = [];
 
+    const browserPool = new BrowserPool();
+    await browserPool.init();
+
     console.log(`Starting spider for ${products.length} products across ${countries.length} countries...`);
 
-    for (const product of products) {
+    try {
+      for (const product of products) {
       console.log(`\n🔍 Searching for ${product.model_code} (${product.name_cs})`);
       
       const normalizedModelCode = this.normalizeString(product.model_code);
@@ -41,7 +45,7 @@ export class SearchSpider {
 
         let searchHtml = '';
         try {
-          searchHtml = await fetchWithRetry(searchUrl);
+          searchHtml = await browserPool.fetchHtml(searchUrl);
         } catch (e) {
           console.error(`[${country}] Search failed: ${e}`);
           continue;
@@ -78,7 +82,7 @@ export class SearchSpider {
 
         let detailHtml = '';
         try {
-          detailHtml = await fetchWithRetry(productUrl);
+          detailHtml = await browserPool.fetchHtml(productUrl);
         } catch (e) {
           console.error(`[${country}] Detail fetch failed: ${e}`);
           continue;
@@ -105,7 +109,10 @@ export class SearchSpider {
             console.log(`[${country}] ❌ Rejected offer: ${offer.raw_title} (Confidence: ${matchResult.confidence})`);
           }
         }
+        }
       }
+    } finally {
+      await browserPool.close();
     }
 
     console.log(`\nSpider finished. Found ${discoveredOffers.length} valid offers.`);

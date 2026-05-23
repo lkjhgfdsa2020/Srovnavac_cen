@@ -32,8 +32,11 @@ jobs:
     - name: Run FX update
       run: pnpm fx:update
 
+    - name: Install Playwright
+      run: pnpm exec playwright install --with-deps chromium
+
     - name: Run Crawler & Comparison
-      run: npx tsx generate_mock_offers.ts && pnpm crawl || echo "Crawler returned non-zero, continuing"
+      run: pnpm spider || echo "Crawler returned non-zero, continuing"
       env:
         NODE_OPTIONS: "--max-http-header-size=65536"
 

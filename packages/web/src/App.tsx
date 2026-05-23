@@ -42,6 +42,9 @@ function App() {
   
   const [newProductUrl, setNewProductUrl] = useState('');
   const [isAdding, setIsAdding] = useState(false);
+  
+  const [flyerUrl, setFlyerUrl] = useState('');
+  const [isExtracting, setIsExtracting] = useState(false);
 
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,6 +68,31 @@ function App() {
       alert('Failed to add product.');
     } finally {
       setIsAdding(false);
+    }
+  };
+
+  const handleExtractFlyer = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!flyerUrl) return;
+    setIsExtracting(true);
+    try {
+      const res = await fetch('/api/extract-flyer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: flyerUrl })
+      });
+      if (!res.ok) {
+        const d = await res.json();
+        alert('Error: ' + d.error);
+      } else {
+        setFlyerUrl('');
+        alert('Flyer extracted successfully! Products added and crawled. Reloading data...');
+        window.location.reload();
+      }
+    } catch (err) {
+      alert('Failed to extract flyer.');
+    } finally {
+      setIsExtracting(false);
     }
   };
 
@@ -153,6 +181,20 @@ function App() {
           />
           <button type="submit" className="cta-button" disabled={isAdding}>
             {isAdding ? 'Adding & Crawling...' : '+ Add Product'}
+          </button>
+        </form>
+
+        <form onSubmit={handleExtractFlyer} className="add-product-form" style={{ marginTop: '0.5rem' }}>
+          <input 
+            type="url" 
+            placeholder="Paste Lidl Flyer URL (e.g. lidl.cz/l/cs/letak/...)" 
+            value={flyerUrl} 
+            onChange={e => setFlyerUrl(e.target.value)} 
+            className="url-input"
+            required
+          />
+          <button type="submit" className="cta-button" disabled={isExtracting} style={{ backgroundColor: 'var(--success)', borderColor: 'var(--success)' }}>
+            {isExtracting ? 'Extracting & Crawling...' : 'Extract Flyer'}
           </button>
         </form>
       </header>

@@ -42,6 +42,40 @@ const localApiPlugin = {
             res.end(JSON.stringify({ error: 'Invalid JSON body' }));
           }
         });
+      } else if (req.url === '/api/extract-flyer' && req.method === 'POST') {
+        let body = '';
+        req.on('data', (chunk: any) => { body += chunk.toString(); });
+        req.on('end', () => {
+          try {
+            const { url } = JSON.parse(body);
+            if (!url) {
+              res.statusCode = 400;
+              return res.end(JSON.stringify({ error: 'URL is required' }));
+            }
+            
+            console.log(`[API] Extracting flyer from URL: ${url}`);
+            
+            const rootDir = path.resolve(__dirname, '../../');
+            const cmd = `NODE_OPTIONS="--max-http-header-size=65536" pnpm --filter crawler exec tsx src/cli/extract-flyer.ts "${url}" && pnpm crawl`;
+            
+            exec(cmd, { cwd: rootDir }, (error, stdout, stderr) => {
+              if (error) {
+                console.error(`[API] exec error: ${error}`);
+                console.error(stderr);
+                res.statusCode = 500;
+                res.end(JSON.stringify({ error: 'Failed to extract flyer or crawl.' }));
+                return;
+              }
+              console.log(`[API] Extract flyer success: ${stdout}`);
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ success: true, stdout }));
+            });
+            
+          } catch (e) {
+            res.statusCode = 400;
+            res.end(JSON.stringify({ error: 'Invalid JSON body' }));
+          }
+        });
       } else {
         next();
       }
