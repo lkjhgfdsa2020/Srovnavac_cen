@@ -1,0 +1,104 @@
+{
+  "generated_at": "2026-05-23T08:03:16.481Z",
+  "reference_currency": "CZK",
+  "price_basis": "product_price_without_shipping",
+  "health_report": {
+    "excluded_external_sellers_count": 0
+  },
+  "fx": {
+    "source": "CNB",
+    "date": "2026-05-23"
+  },
+  "rows": [
+    {
+      "canonical_variant_id": "parkside-petps-1100-a1-base",
+      "canonical_product_id": "parkside-petps-1100-a1",
+      "display_name": "Ponorné kalové čerpadlo PETPS 1100 A1",
+      "model_code": "PETPS 1100 A1",
+      "bundle_summary": "base",
+      "category": "zahrada_cerpadla",
+      "image_url": null,
+      "best_offer_id": null,
+      "best_country": null,
+      "best_source": null,
+      "best_price_czk": null,
+      "compared_at": "2026-05-23T08:03:16.479Z",
+      "cells": []
+    },
+    {
+      "canonical_variant_id": "parkside-pws-230-e5-base",
+      "canonical_product_id": "parkside-pws-230-e5",
+      "display_name": "Úhlová bruska PWS 230 E5",
+      "model_code": "PWS 230 E5",
+      "bundle_summary": "base",
+      "category": "elektricke_naradi",
+      "image_url": null,
+      "best_offer_id": null,
+      "best_country": null,
+      "best_source": null,
+      "best_price_czk": null,
+      "compared_at": "2026-05-23T08:03:16.481Z",
+      "cells": []
+    },
+    {
+      "canonical_variant_id": "parkside-papp-2012-a1-12ah-2pcs",
+      "canonical_product_id": "parkside-papp-2012-a1",
+      "display_name": "Sada Smart akumulátor 12 Ah PAPP 2012 A1, 2dílná",
+      "model_code": "PAPP 2012 A1",
+      "bundle_summary": "battery_pack_multi",
+      "category": "baterie_nabijecky",
+      "image_url": null,
+      "best_offer_id": null,
+      "best_country": null,
+      "best_source": null,
+      "best_price_czk": null,
+      "compared_at": "2026-05-23T08:03:16.481Z",
+      "cells": []
+    },
+    {
+      "canonical_variant_id": "parkside-pdssa-20-li-b2-smart-4ah",
+      "canonical_product_id": "parkside-pdssa-20-li-b2",
+      "display_name": "Aku rázový utahovák PDSSA 20-Li B2, Smart 4 Ah",
+      "model_code": "PDSSA 20-Li B2",
+      "bundle_summary": "with_battery",
+      "category": "aku_naradi",
+      "image_url": null,
+      "best_offer_id": null,
+      "best_country": null,
+      "best_source": null,
+      "best_price_czk": null,
+      "compared_at": "2026-05-23T08:03:16.481Z",
+      "cells": []
+    },
+    {
+      "canonical_variant_id": "parkside-ppbks-56-b2-electric-start",
+      "canonical_product_id": "parkside-ppbks-56-b2",
+      "display_name": "Benzínová řetězová pila s elektrickým startováním PPBKS 56 B2",
+      "model_code": "PPBKS 56 B2",
+      "bundle_summary": "base",
+      "category": "zahradni_stroje",
+      "image_url": null,
+      "best_offer_id": null,
+      "best_country": null,
+      "best_source": null,
+      "best_price_czk": null,
+      "compared_at": "2026-05-23T08:03:16.481Z",
+      "cells": []
+    },
+    {
+      "canonical_variant_id": "lidl-unknown-base",
+      "canonical_product_id": "lidl-unknown",
+      "display_name": "Unknown Title",
+      "model_code": "UNKNOWN",
+      "bundle_summary": "base",
+      "category": "custom_added",
+      "image_url": null,
+      "best_offer_id": null,
+      "best_country": null,
+      "best_source": null,
+      "best_price_czk": null,
+      "compared_at": "2026-05-23T08:03:16.481Z",
+      "cells": []
+    }
+  ]
+}

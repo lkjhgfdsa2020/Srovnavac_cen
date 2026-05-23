@@ -7,6 +7,5 @@ node_modules/
 dist/
 .env
 .DS_Store
-data/public/
-data/history/
+data/history/raw-offers.json
 coverage/

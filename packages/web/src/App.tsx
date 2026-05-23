@@ -131,7 +131,7 @@ function App() {
           </select>
 
           <a 
-            href="https://github.com/new" 
+            href="https://github.com/lkjhgfdsa2020/Srovnavac_cen/actions/workflows/crawl-and-build.yml" 
             target="_blank" 
             rel="noreferrer"
             className="cta-button"
