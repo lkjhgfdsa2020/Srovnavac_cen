@@ -59,8 +59,13 @@ function App() {
         body: JSON.stringify({ url: newProductUrl })
       });
       if (!res.ok) {
-        const d = await res.json();
-        setActionError(d.error || 'Failed to add product.');
+        const contentType = res.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const d = await res.json();
+          setActionError(d.error || 'Failed to add product.');
+        } else {
+          setActionError(`Server returned ${res.status} ${res.statusText}. Note: Adding products only works when running the dashboard locally (npm run dev), not on GitHub Pages.`);
+        }
       } else {
         setNewProductUrl('');
         alert('Product added and crawler triggered! Reloading data...');
@@ -85,8 +90,13 @@ function App() {
         body: JSON.stringify({ url: flyerUrl })
       });
       if (!res.ok) {
-        const d = await res.json();
-        setActionError(d.error || 'Failed to extract flyer.');
+        const contentType = res.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const d = await res.json();
+          setActionError(d.error || 'Failed to extract flyer.');
+        } else {
+          setActionError(`Server returned ${res.status} ${res.statusText}. Note: Extracting flyers only works when running the dashboard locally (npm run dev), not on GitHub Pages.`);
+        }
       } else {
         setFlyerUrl('');
         alert('Flyer extracted successfully! Products added and crawled. Reloading data...');
@@ -190,7 +200,7 @@ function App() {
         <form onSubmit={handleExtractFlyer} className="add-product-form" style={{ marginTop: '0.5rem' }}>
           <input 
             type="url" 
-            placeholder="Paste Lidl Flyer URL (e.g. lidl.cz/l/cs/letak/...)" 
+            placeholder="Paste Lidl Flyer URL (e.g. lidl.cz/l/cs/letak/... or .pdf)" 
             value={flyerUrl} 
             onChange={e => setFlyerUrl(e.target.value)} 
             className="url-input"

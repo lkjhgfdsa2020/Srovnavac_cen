@@ -9,6 +9,40 @@ export interface ConnectorContext {
 }
 
 export class LidlParser {
+  static parseApiDetail(json: any, url: string, context: ConnectorContext): RawOffer[] {
+    const scraped_at = new Date().toISOString();
+    if (!json || json.length === 0) return [];
+    
+    const product = json[0];
+    
+    let availability: RawOffer['availability'] = 'unknown';
+    if (product.stockAvailability?.onlineAvailable) {
+      availability = 'online_available';
+    } else if (product.stockAvailability?.availabilityIndicator === 2) {
+      availability = 'out_of_stock';
+    } else {
+      availability = 'out_of_stock';
+    }
+
+    const price = product.price?.price !== undefined ? parseFloat(product.price.price) : null;
+    const old_price = product.price?.oldPrice !== undefined ? parseFloat(product.price.oldPrice) : undefined;
+    
+    return [{
+      source: context.source,
+      country: context.country,
+      url: product.canonicalUrl ? `https://www.lidl.cz${product.canonicalUrl}` : url,
+      scraped_at,
+      price,
+      // @ts-ignore - we might want to extend RawOffer to support original_price later, for now we just keep price
+      original_price: old_price, 
+      currency: product.price?.currencyCode || context.currency,
+      availability,
+      raw_title: product.fullTitle || product.title || 'Unknown Title',
+      raw_model_code: product.erpNumber || undefined,
+      image_url: product.image || undefined,
+    }];
+  }
+
   static parseDetail(html: string, url: string, context: ConnectorContext): RawOffer[] {
     const $ = cheerio.load(html);
     const scraped_at = new Date().toISOString();

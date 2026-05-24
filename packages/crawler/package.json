@@ -11,6 +11,7 @@
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
     "core": "workspace:*",
+    "pdf-parse": "^1.1.1",
     "playwright": "^1.60.0"
   },
   "devDependencies": {

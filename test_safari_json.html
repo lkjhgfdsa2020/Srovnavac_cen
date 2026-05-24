@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <script>
+    const html = "<html><body>Error</body></html>";
+    const res = new Response(html, { status: 500, headers: { 'Content-Type': 'text/html' } });
+    res.json().catch(e => {
+      document.body.innerHTML += `<p>${e.name}: ${e.message}</p>`;
+    });
+  </script>
+</body>
+</html>

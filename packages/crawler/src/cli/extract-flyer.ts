@@ -2,8 +2,37 @@ import { chromium } from 'playwright';
 import fs from 'fs';
 import path from 'path';
 import yaml from 'yaml';
+import axios from 'axios';
+import pdfParse from 'pdf-parse';
+
+export async function extractPdfProducts(url: string) {
+  console.log(`[Flyer] Downloading PDF from: ${url}`);
+  const res = await axios.get(url, { responseType: 'arraybuffer' });
+  console.log(`[Flyer] Parsing PDF...`);
+  const data = await pdfParse(res.data);
+  const text = data.text;
+  
+  const productNumberRegex = /\b100\d{6}\b/g;
+  const numbers = text.match(productNumberRegex) || [];
+  const uniqueNumbers = Array.from(new Set(numbers));
+  
+  console.log(`[Flyer] Found ${uniqueNumbers.length} unique product numbers in PDF.`);
+  
+  const products: { name: string, model_code: string, url: string }[] = [];
+  for (const num of uniqueNumbers) {
+    const pUrl = `https://www.lidl.cz/p/p${num}`;
+    products.push({ name: 'Lidl Product (PDF Extracted)', model_code: num, url: pUrl });
+  }
+  
+  return products;
+}
+
 
 export async function extractFlyerProducts(url: string) {
+  if (url.toLowerCase().endsWith('.pdf')) {
+    return await extractPdfProducts(url);
+  }
+
   console.log(`[Flyer] Launching browser for: ${url}`);
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
@@ -116,4 +145,7 @@ async function main() {
   }
 }
 
-main().catch(console.error);
+main().catch(err => {
+  console.error("Failed to extract flyer:", err);
+  process.exit(1);
+});
