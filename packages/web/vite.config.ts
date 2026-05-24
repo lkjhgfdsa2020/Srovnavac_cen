@@ -29,7 +29,7 @@ const localApiPlugin = {
                 console.error(`[API] exec error: ${error}`);
                 console.error(stderr);
                 res.statusCode = 500;
-                res.end(JSON.stringify({ error: 'Failed to add product or crawl.' }));
+                res.end(JSON.stringify({ error: `Failed to add product: ${stderr || error.message}` }));
                 return;
               }
               console.log(`[API] Add product success: ${stdout}`);

@@ -45,11 +45,13 @@ function App() {
   
   const [flyerUrl, setFlyerUrl] = useState('');
   const [isExtracting, setIsExtracting] = useState(false);
+  const [actionError, setActionError] = useState<string | null>(null);
 
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProductUrl) return;
     setIsAdding(true);
+    setActionError(null);
     try {
       const res = await fetch('/api/add-product', {
         method: 'POST',
@@ -58,14 +60,14 @@ function App() {
       });
       if (!res.ok) {
         const d = await res.json();
-        alert('Error: ' + d.error);
+        setActionError(d.error || 'Failed to add product.');
       } else {
         setNewProductUrl('');
         alert('Product added and crawler triggered! Reloading data...');
         window.location.reload();
       }
-    } catch (err) {
-      alert('Failed to add product.');
+    } catch (err: any) {
+      setActionError(err.message || 'Failed to add product.');
     } finally {
       setIsAdding(false);
     }
@@ -75,6 +77,7 @@ function App() {
     e.preventDefault();
     if (!flyerUrl) return;
     setIsExtracting(true);
+    setActionError(null);
     try {
       const res = await fetch('/api/extract-flyer', {
         method: 'POST',
@@ -83,14 +86,14 @@ function App() {
       });
       if (!res.ok) {
         const d = await res.json();
-        alert('Error: ' + d.error);
+        setActionError(d.error || 'Failed to extract flyer.');
       } else {
         setFlyerUrl('');
         alert('Flyer extracted successfully! Products added and crawled. Reloading data...');
         window.location.reload();
       }
-    } catch (err) {
-      alert('Failed to extract flyer.');
+    } catch (err: any) {
+      setActionError(err.message || 'Failed to extract flyer.');
     } finally {
       setIsExtracting(false);
     }
@@ -197,6 +200,16 @@ function App() {
             {isExtracting ? 'Extracting & Crawling...' : 'Extract Flyer'}
           </button>
         </form>
+
+        {actionError && (
+          <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,0,0,0.5)', borderRadius: '4px' }}>
+            <h3 style={{ color: 'var(--danger)', margin: '0 0 0.5rem 0', fontSize: '1rem' }}>Action Failed</h3>
+            <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', color: 'var(--text)', fontSize: '0.85rem', margin: 0, maxHeight: '200px', overflowY: 'auto' }}>
+              {actionError}
+            </pre>
+            <button onClick={() => setActionError(null)} style={{ marginTop: '0.5rem', background: 'transparent', border: '1px solid var(--text-secondary)', color: 'var(--text-secondary)', padding: '0.25rem 0.5rem', cursor: 'pointer', borderRadius: '4px' }}>Dismiss</button>
+          </div>
+        )}
       </header>
 
       <div className="table-container">

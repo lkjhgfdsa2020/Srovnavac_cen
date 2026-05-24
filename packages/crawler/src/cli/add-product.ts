@@ -3,7 +3,7 @@ import path from 'path';
 import yaml from 'yaml';
 import { LidlParser } from '../parsers/lidl.js';
 import { KauflandParser } from '../parsers/kaufland.js';
-import { fetchWithRetry } from '../http.js';
+import { BrowserPool } from '../browser.js';
 
 async function main() {
   const url = process.argv[2];
@@ -27,11 +27,23 @@ async function main() {
   }
 
   console.log(`Fetching ${url}...`);
-  const html = await fetchWithRetry(url);
+  const browserPool = new BrowserPool();
+  await browserPool.init();
+  let html = '';
+  try {
+    const pageContent = await browserPool.fetchHtml(url);
+    if (!pageContent) throw new Error('Empty response');
+    html = pageContent;
+  } catch (err: any) {
+    console.error(`BrowserPool fetch failed: ${err.message}`);
+    await browserPool.close();
+    process.exit(1);
+  }
+  await browserPool.close();
   
   const offers = parser.parseDetail(html, url, { source, country: 'CZ', currency: 'CZK' });
-  if (!offers || offers.length === 0) {
-    console.error('Could not parse any offers from the provided URL.');
+  if (!offers || offers.length === 0 || !offers[0].raw_title || offers[0].raw_title.trim() === '') {
+    console.error('Could not parse any offers from the provided URL. Ensure the product exists and is available.');
     process.exit(1);
   }
 
