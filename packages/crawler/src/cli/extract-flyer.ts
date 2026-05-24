@@ -129,8 +129,16 @@ async function main() {
     for (const p of products) {
       if (!seedData.products.some((existing: any) => existing.model_code === p.model_code)) {
         seedData.products.push({
+          canonical_product_id: `lidl-${p.model_code}`,
+          canonical_variant_id: `lidl-${p.model_code}-base`,
+          name_cs: p.name,
+          brand: 'Parkside',
           model_code: p.model_code,
-          name_cs: p.name
+          product_type: 'tool',
+          category: 'custom_added',
+          battery_platform: 'unknown',
+          bundle_type: 'base',
+          critical_attributes: {}
         });
         addedCount++;
       }
