@@ -191,3 +191,13 @@ products:
     name_cs: Lidl Product (PDF Extracted)
   - model_code: "100400903"
     name_cs: Lidl Product (PDF Extracted)
+  - canonical_product_id: lidl-800012305
+    canonical_variant_id: lidl-800012305-base
+    name_cs: PARKSIDE® Aku šroubovák PABS 20 Li I9, 4 Ah
+    brand: Parkside
+    model_code: "800012305"
+    product_type: tool
+    category: custom_added
+    battery_platform: unknown
+    bundle_type: base
+    critical_attributes: {}

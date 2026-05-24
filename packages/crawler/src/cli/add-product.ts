@@ -27,21 +27,53 @@ async function main() {
   }
 
   console.log(`Fetching ${url}...`);
-  const browserPool = new BrowserPool();
-  await browserPool.init();
-  let html = '';
-  try {
-    const pageContent = await browserPool.fetchHtml(url);
-    if (!pageContent) throw new Error('Empty response');
-    html = pageContent;
-  } catch (err: any) {
-    console.error(`BrowserPool fetch failed: ${err.message}`);
+  let offers: any[] = [];
+
+  if (source === 'lidl') {
+    const match = url.match(/\/p(\d+)(?:\?|$)/) || url.match(/erpNumbers=(\d+)/) || url.match(/[pP](\d+)(?:\?|$)/);
+    let erpNumber = '';
+    if (match) erpNumber = match[1];
+    else {
+      const lastDigits = url.match(/(\d+)(?!.*\d)/);
+      if (lastDigits) erpNumber = lastDigits[1];
+    }
+
+    if (!erpNumber) {
+      console.error('Could not extract erpNumber from Lidl URL.');
+      process.exit(1);
+    }
+    
+    console.log(`Using Lidl API for erpNumber: ${erpNumber}`);
+    const apiUrl = `https://www.lidl.cz/p/api/gridboxes/CZ/cs?erpNumbers=${erpNumber}`;
+    try {
+      const res = await fetch(apiUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7 AppleWebKit/537.36) Chrome/120.0.0.0 Safari/537.36'
+        }
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      offers = LidlParser.parseApiDetail(json, url, { source, country: 'CZ', currency: 'CZK' });
+    } catch (err: any) {
+      console.error(`Lidl API fetch failed: ${err.message}`);
+      process.exit(1);
+    }
+  } else {
+    const browserPool = new BrowserPool();
+    await browserPool.init();
+    let html = '';
+    try {
+      const pageContent = await browserPool.fetchHtml(url);
+      if (!pageContent) throw new Error('Empty response');
+      html = pageContent;
+    } catch (err: any) {
+      console.error(`BrowserPool fetch failed: ${err.message}`);
+      await browserPool.close();
+      process.exit(1);
+    }
     await browserPool.close();
-    process.exit(1);
+    offers = parser.parseDetail(html, url, { source, country: 'CZ', currency: 'CZK' });
   }
-  await browserPool.close();
-  
-  const offers = parser.parseDetail(html, url, { source, country: 'CZ', currency: 'CZK' });
   if (!offers || offers.length === 0 || !offers[0].raw_title || offers[0].raw_title.trim() === '') {
     console.error('Could not parse any offers from the provided URL. Ensure the product exists and is available.');
     process.exit(1);
