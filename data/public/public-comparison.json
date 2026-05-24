@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T17:53:04.491Z",
+  "generated_at": "2026-05-24T19:21:39.007Z",
   "reference_currency": "CZK",
   "price_basis": "product_price_without_shipping",
   "health_report": {
@@ -22,7 +22,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.490Z",
+      "compared_at": "2026-05-24T19:21:39.007Z",
       "cells": []
     },
     {
@@ -37,7 +37,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
+      "compared_at": "2026-05-24T19:21:39.007Z",
       "cells": []
     },
     {
@@ -52,7 +52,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
+      "compared_at": "2026-05-24T19:21:39.007Z",
       "cells": []
     },
     {
@@ -67,7 +67,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
+      "compared_at": "2026-05-24T19:21:39.007Z",
       "cells": []
     },
     {
@@ -82,7 +82,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
+      "compared_at": "2026-05-24T19:21:39.007Z",
       "cells": []
     },
     {
@@ -97,414 +97,22 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
+      "compared_at": "2026-05-24T19:21:39.007Z",
       "cells": []
     },
     {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100399659",
+      "canonical_variant_id": "lidl-800012305-base",
+      "canonical_product_id": "lidl-800012305",
+      "display_name": "PARKSIDE® Aku šroubovák PABS 20 Li I9, 4 Ah",
+      "model_code": "800012305",
+      "bundle_summary": "base",
+      "category": "custom_added",
       "image_url": null,
       "best_offer_id": null,
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100399918",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100399453",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100399734",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100399906",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100399919",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100399747",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100398817",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100398589",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100405140",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100398569",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100373186",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100400603",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100404673",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100399910",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100395738",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100398431",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100400782",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100405458",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100400775",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100343158",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100354997",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100393741",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100396040",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100404437",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100397960",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100393111",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100400596",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100401098",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100392562",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100401327",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100401349",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100405422",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100406090",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100398876",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100405671",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
-      "cells": []
-    },
-    {
-      "display_name": "Lidl Product (PDF Extracted)",
-      "model_code": "100400903",
-      "image_url": null,
-      "best_offer_id": null,
-      "best_country": null,
-      "best_source": null,
-      "best_price_czk": null,
-      "compared_at": "2026-05-24T17:53:04.491Z",
+      "compared_at": "2026-05-24T19:21:39.007Z",
       "cells": []
     }
   ]
