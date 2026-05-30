@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29T08:48:09.145Z",
+  "generated_at": "2026-05-30T07:45:18.283Z",
   "reference_currency": "CZK",
   "price_basis": "product_price_without_shipping",
   "health_report": {
@@ -7,7 +7,7 @@
   },
   "fx": {
     "source": "CNB",
-    "date": "2026-05-29"
+    "date": "2026-05-30"
   },
   "rows": [
     {
@@ -22,7 +22,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-29T08:48:09.144Z",
+      "compared_at": "2026-05-30T07:45:18.283Z",
       "row_quality_flags": [],
       "cells": []
     },
@@ -38,7 +38,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-29T08:48:09.145Z",
+      "compared_at": "2026-05-30T07:45:18.283Z",
       "row_quality_flags": [],
       "cells": []
     },
@@ -54,7 +54,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-29T08:48:09.145Z",
+      "compared_at": "2026-05-30T07:45:18.283Z",
       "row_quality_flags": [],
       "cells": []
     },
@@ -70,7 +70,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-29T08:48:09.145Z",
+      "compared_at": "2026-05-30T07:45:18.283Z",
       "row_quality_flags": [],
       "cells": []
     },
@@ -86,7 +86,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-29T08:48:09.145Z",
+      "compared_at": "2026-05-30T07:45:18.283Z",
       "row_quality_flags": [],
       "cells": []
     },
@@ -102,7 +102,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-29T08:48:09.145Z",
+      "compared_at": "2026-05-30T07:45:18.283Z",
       "row_quality_flags": [],
       "cells": []
     },
@@ -118,7 +118,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-05-29T08:48:09.145Z",
+      "compared_at": "2026-05-30T07:45:18.283Z",
       "row_quality_flags": [],
       "cells": []
     }
