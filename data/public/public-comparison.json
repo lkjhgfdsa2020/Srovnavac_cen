@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T09:27:16.463Z",
+  "generated_at": "2026-09-19T09:14:13.138Z",
   "reference_currency": "CZK",
   "price_basis": "product_price_without_shipping",
   "health_report": {
@@ -7,7 +7,7 @@
   },
   "fx": {
     "source": "CNB",
-    "date": "2026-09-18"
+    "date": "2026-09-19"
   },
   "rows": [
     {
@@ -22,7 +22,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-09-18T09:27:16.462Z",
+      "compared_at": "2026-09-19T09:14:13.138Z",
       "cells": []
     },
     {
@@ -37,7 +37,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-09-18T09:27:16.463Z",
+      "compared_at": "2026-09-19T09:14:13.138Z",
       "cells": []
     },
     {
@@ -52,7 +52,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-09-18T09:27:16.463Z",
+      "compared_at": "2026-09-19T09:14:13.138Z",
       "cells": []
     },
     {
@@ -67,7 +67,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-09-18T09:27:16.463Z",
+      "compared_at": "2026-09-19T09:14:13.138Z",
       "cells": []
     },
     {
@@ -82,7 +82,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-09-18T09:27:16.463Z",
+      "compared_at": "2026-09-19T09:14:13.138Z",
       "cells": []
     },
     {
@@ -97,7 +97,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-09-18T09:27:16.463Z",
+      "compared_at": "2026-09-19T09:14:13.138Z",
       "cells": []
     },
     {
@@ -112,7 +112,7 @@
       "best_country": null,
       "best_source": null,
       "best_price_czk": null,
-      "compared_at": "2026-09-18T09:27:16.463Z",
+      "compared_at": "2026-09-19T09:14:13.138Z",
       "cells": []
     }
   ]
