@@ -1,7 +1,7 @@
 {
   "source": "CNB",
-  "date": "2026-10-05",
-  "fetched_at": "2026-10-05T11:56:43.993Z",
+  "date": "2026-10-06",
+  "fetched_at": "2026-10-06T11:36:36.672Z",
   "fallback_used": false,
   "rates": {
     "CZK": {
@@ -12,152 +12,152 @@
     "AUD": {
       "code": "AUD",
       "amount": 1,
-      "rate": 15.127
+      "rate": 15.201
     },
     "BRL": {
       "code": "BRL",
       "amount": 1,
-      "rate": 4.17
+      "rate": 4.382
     },
     "CAD": {
       "code": "CAD",
       "amount": 1,
-      "rate": 15.304
+      "rate": 15.321
     },
     "CNY": {
       "code": "CNY",
       "amount": 1,
-      "rate": 3.251
+      "rate": 3.257
     },
     "DKK": {
       "code": "DKK",
       "amount": 1,
-      "rate": 3.274
+      "rate": 3.273
     },
     "EUR": {
       "code": "EUR",
       "amount": 1,
-      "rate": 24.465
+      "rate": 24.46
     },
     "HKD": {
       "code": "HKD",
       "amount": 1,
-      "rate": 2.777
+      "rate": 2.782
     },
     "HUF": {
       "code": "HUF",
       "amount": 100,
-      "rate": 6.626
+      "rate": 6.649
     },
     "ISK": {
       "code": "ISK",
       "amount": 100,
-      "rate": 17.832
+      "rate": 17.854
     },
     "XDR": {
       "code": "XDR",
       "amount": 1,
-      "rate": 29.553
+      "rate": 29.566
     },
     "INR": {
       "code": "INR",
       "amount": 100,
-      "rate": 22.627
+      "rate": 22.674
     },
     "IDR": {
       "code": "IDR",
       "amount": 1000,
-      "rate": 1.219
+      "rate": 1.22
     },
     "ILS": {
       "code": "ILS",
       "amount": 1,
-      "rate": 7.112
+      "rate": 7.13
     },
     "JPY": {
       "code": "JPY",
       "amount": 100,
-      "rate": 13.825
+      "rate": 13.802
     },
     "MYR": {
       "code": "MYR",
       "amount": 1,
-      "rate": 5.336
+      "rate": 5.342
     },
     "MXN": {
       "code": "MXN",
       "amount": 1,
-      "rate": 1.189
+      "rate": 1.203
     },
     "NZD": {
       "code": "NZD",
       "amount": 1,
-      "rate": 12.229
+      "rate": 12.209
     },
     "NOK": {
       "code": "NOK",
       "amount": 1,
-      "rate": 2.258
+      "rate": 2.274
     },
     "PHP": {
       "code": "PHP",
       "amount": 100,
-      "rate": 34.818
+      "rate": 34.837
     },
     "PLN": {
       "code": "PLN",
       "amount": 1,
-      "rate": 5.588
+      "rate": 5.586
     },
     "RON": {
       "code": "RON",
       "amount": 1,
-      "rate": 4.574
+      "rate": 4.584
     },
     "SGD": {
       "code": "SGD",
       "amount": 1,
-      "rate": 17.03
+      "rate": 17.055
     },
     "ZAR": {
       "code": "ZAR",
       "amount": 1,
-      "rate": 1.303
+      "rate": 1.313
     },
     "KRW": {
       "code": "KRW",
       "amount": 100,
-      "rate": 1.615
+      "rate": 1.624
     },
     "SEK": {
       "code": "SEK",
       "amount": 1,
-      "rate": 2.166
+      "rate": 2.174
     },
     "CHF": {
       "code": "CHF",
       "amount": 1,
-      "rate": 26.362
+      "rate": 26.278
     },
     "THB": {
       "code": "THB",
       "amount": 100,
-      "rate": 64.87
+      "rate": 64.808
     },
     "TRY": {
       "code": "TRY",
       "amount": 100,
-      "rate": 44.349
+      "rate": 44.423
     },
     "GBP": {
       "code": "GBP",
       "amount": 1,
-      "rate": 28.768
+      "rate": 28.875
     },
     "USD": {
       "code": "USD",
       "amount": 1,
-      "rate": 21.795
+      "rate": 21.834
     }
   }
 }
